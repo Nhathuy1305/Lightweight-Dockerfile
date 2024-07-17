@@ -1,4 +1,4 @@
-# Dockerfile for many programming languages
+# Lightweight Dockerfile
 
 ![picture](./images/docker.png)
 
