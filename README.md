@@ -56,7 +56,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Nginx Config:
+Nginx Config (Create a nginx.conf file in the same directory with your Dockerfile):
 
 ```
 # auto detects a good number of processes to run
