@@ -277,7 +277,7 @@ CMD ["python", "-m", "app.py"]
 Normal:
 
 ```Dockerfile
-FROM golang:1.20-alpine AS build
+FROM golang:1.23-alpine AS build
 
 WORKDIR /build
 COPY go.mod go.sum ./
