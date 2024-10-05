@@ -7,7 +7,7 @@
 - [NodeJS](#dockerfile-for-nodejs)
 - [Python](#dockerfile-for-python)
 - [Golang](#dockerfile-for-golang)
-- [Java Spring Boot](#dockerfile-for-java-spring-boot)
+- [Java Spring Boot](#dockerfile-for-java-spring-boot-(maven))
 - [Java Quarkus](#dockerfile-for-java-quarkus)
 - [ASP.NET Core](#dockerfile-for-aspnet-core)
 - [Ruby](#dockerfile-for-ruby-on-rails)
@@ -319,7 +319,7 @@ CMD ["/app/run"]
 ```
 
 ## Dockerfile for Java Spring Boot
-
+Maven:
 ```Dockerfile
 FROM eclipse-temurin:17-jdk-focal as build
  
@@ -338,6 +338,27 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 COPY --from=build /build/target/*.jar run.jar
 ENTRYPOINT ["java", "-jar", "/app/run.jar"]
+```
+
+Gradle:
+```Dockerfile
+FROM eclipse-temurin:17-jdk-focal AS build
+
+WORKDIR /build
+
+COPY gradle/ ./gradle
+COPY build.gradle settings.gradle gradlew ./
+RUN sed -i 's/\r$//' gradlew
+RUN ./gradlew build --no-daemon
+
+COPY . .
+RUN sed -i 's/\r$//' gradlew
+RUN ./gradlew build --no-daemon -x test
+
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /build/build/libs/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
 ```
 
 ## Dockerfile for Java Quarkus
