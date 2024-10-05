@@ -7,7 +7,7 @@
 - [NodeJS](#dockerfile-for-nodejs)
 - [Python](#dockerfile-for-python)
 - [Golang](#dockerfile-for-golang)
-- [Java Spring Boot](#dockerfile-for-java-spring-boot-(maven))
+- [Java Spring Boot](#dockerfile-for-java-spring-boot)
 - [Java Quarkus](#dockerfile-for-java-quarkus)
 - [ASP.NET Core](#dockerfile-for-aspnet-core)
 - [Ruby](#dockerfile-for-ruby-on-rails)
