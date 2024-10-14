@@ -339,7 +339,6 @@ WORKDIR /app
 COPY --from=build /build/target/*.jar run.jar
 ENTRYPOINT ["java", "-jar", "/app/run.jar"]
 ```
-
 Gradle:
 ```Dockerfile
 FROM eclipse-temurin:17-jdk-focal AS build
